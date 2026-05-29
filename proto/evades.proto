@@ -1,0 +1,1067 @@
+syntax = "proto3";
+
+package evades;
+
+enum AbilityType {
+  ATONEMENT = 0;
+  ATTRACT = 1;
+  BACKTRACK = 2;
+  BANDAGES = 3;
+  BARRIER = 4;
+  BLACK_HOLE = 5;
+  BLOCKING = 6;
+  BLOOM = 7;
+  CHARGE = 8;
+  CONFECTIONER = 9;
+  CORROSIVE_SNIPER = 10;
+  CRUMBLE = 11;
+  CRUMBLING = 12;
+  DASH = 13;
+  DECAY = 14;
+  DEPART = 15;
+  DISABLING = 16;
+  DISTORT = 17;
+  DRAINING = 18;
+  EARTHQUAKE = 19;
+  ECHO = 20;
+  EMBER = 21;
+  ENERGIZE = 22;
+  ENLARGING = 23;
+  EXPERIENCE_DRAIN = 24;
+  EXPLODIORB = 25;
+  FIRE_TRAIL = 26;
+  FLASHLIGHT = 27;
+  FLOW = 28;
+  FLOWER = 29;
+  FORCE_A = 30;
+  FORCE_B = 31;
+  FREEZING = 32;
+  FROST_GIANT = 33;
+  FUSION = 34;
+  GRASS = 35;
+  GRAVE = 36;
+  GRAVEKEEPER = 37;
+  GRAVITY = 38;
+  HARDEN = 39;
+  ICE_SNIPER = 40;
+  ICTOS = 41;
+  INCINERATE = 42;
+  LANTERN = 43;
+  LATCH = 44;
+  LAVA = 45;
+  LEAD_SNIPER = 46;
+  LIGHTNING = 47;
+  MAGNETIC_NULLIFICATION = 48;
+  MAGNETIC_REDUCTION = 49;
+  MAGNETISM_DOWN = 50;
+  MAGNETISM_UP = 51;
+  MINIMIZE = 52;
+  MORTAR = 53;
+  MOUSE_CONTROL = 54;
+  MUTATIORB = 55;
+  MYSTERY_KEYCARD = 56;
+  NEGATIVE_SNIPER = 57;
+  NETWORK_CONTROL = 58;
+  NIGHT = 59;
+  NINJA_STAR_SNIPER = 60;
+  OBSCURE = 61;
+  ORBIT = 62;
+  PARALYSIS = 63;
+  PARRY = 64;
+  PETRIFY = 65;
+  POISON_SNIPER = 66;
+  POLLINATE = 67;
+  POSITIVE_SNIPER = 68;
+  PREDICTION_SNIPER = 69;
+  QUICKSAND = 70;
+  RADAR = 71;
+  RADIATING_BULLETS = 72;
+  RADIOACTIVE_GLOOP = 73;
+  REANIMATE = 74;
+  REDUCE = 75;
+  REDUCING = 76;
+  REGEN_SNIPER = 77;
+  REPEL = 78;
+  REPELLING = 79;
+  RESURRECTION = 80;
+  REVERSE = 81;
+  REWIND = 82;
+  ROBO_SCANNER = 83;
+  SHADOW = 84;
+  SHATTER = 85;
+  SHIELD = 86;
+  SHIFT = 87;
+  SHRIEK = 88;
+  SLASH = 89;
+  SLIPPERY = 90;
+  SLOWING = 91;
+  SNIPER = 92;
+  SNOWBALL = 93;
+  SPARK = 94;
+  SPARKING = 95;
+  SPEED_SNIPER = 96;
+  STALACTITE = 97;
+  STICKY_COAT = 98;
+  STOMP = 99;
+  STREAM = 100;
+  SUGAR_RUSH = 101;
+  SUMMONER = 102;
+  SUPERNOVA = 103;
+  SWEET_TOOTH = 104;
+  TOXIC = 105;
+  TREE = 106;
+  UMBREL = 107;
+  UNDEAD_INFECTION = 108;
+  VENGEANCE = 109;
+  VIGOR = 110;
+  VOIDBORNE = 111;
+  VOID_DRAIN = 112;
+  VOID_SNIPER = 113;
+  VOID_SWARM = 114;
+  WARP = 115;
+  WILDFIRE = 116;
+  WIND_SNIPER = 117;
+  WITHERING = 118;
+  WORMHOLE = 119;
+}
+
+enum ChatMessageStyle {
+  MESSAGE_STYLE_DEV = 0;
+  MESSAGE_STYLE_HEAD_MOD = 1;
+  MESSAGE_STYLE_JR_MOD = 2;
+  MESSAGE_STYLE_MOD = 3;
+  MESSAGE_STYLE_NORMAL = 4;
+  MESSAGE_STYLE_PRIVATE_MESSAGE = 5;
+  MESSAGE_STYLE_REMOVED = 6;
+  MESSAGE_STYLE_SERVER_IMPORTANT = 7;
+  MESSAGE_STYLE_SERVER_INFO = 8;
+  MESSAGE_STYLE_SERVER_WARNING = 9;
+  MESSAGE_STYLE_SR_MOD = 10;
+  MESSAGE_STYLE_STREAMER = 11;
+  MESSAGE_STYLE_YOUTUBER = 12;
+}
+
+enum ConnectionType {
+  ERRORED_CONNECTION = 0;
+  NORMAL_CONNECTION = 1;
+  RESTORED_CONNECTION = 2;
+}
+
+enum EffectType {
+  ATONEMENT_EFFECT = 0;
+  ATTRACT_EFFECT = 1;
+  BLOCKING_EFFECT = 2;
+  CHARGE_EFFECT = 3;
+  DECAY_EFFECT = 4;
+  DISABLING_EFFECT = 5;
+  DISTORT_EFFECT = 6;
+  DRAINING_EFFECT = 7;
+  EARTHQUAKE_EFFECT = 8;
+  ENEMY_BARRIER_EFFECT = 9;
+  ENEMY_BLOCKING_EFFECT = 10;
+  ENEMY_BOSS_EFFECT = 11;
+  ENEMY_CYBOT_EFFECT = 12;
+  ENEMY_CYBOT_SHIELD_EFFECT = 13;
+  ENEMY_DISABLING_EFFECT = 14;
+  ENEMY_DISARMING_EFFECT = 15;
+  ENEMY_DRAINING_EFFECT = 16;
+  ENEMY_ENLARGING_EFFECT = 17;
+  ENEMY_EXPERIENCE_DRAIN_EFFECT = 18;
+  ENEMY_FLAMING_EFFECT = 19;
+  ENEMY_FREEZING_EFFECT = 20;
+  ENEMY_GRAVITY_EFFECT = 21;
+  ENEMY_LAVA_EFFECT = 22;
+  ENEMY_MAGNETIC_NULLIFICATION_EFFECT = 23;
+  ENEMY_MAGNETIC_REDUCTION_EFFECT = 24;
+  ENEMY_QUICKSAND_EFFECT = 25;
+  ENEMY_RADAR_EFFECT = 26;
+  ENEMY_REDUCING_EFFECT = 27;
+  ENEMY_REPELLING_EFFECT = 28;
+  ENEMY_SLIPPERY_EFFECT = 29;
+  ENEMY_SLOWING_EFFECT = 30;
+  ENEMY_TOXIC_EFFECT = 31;
+  ENEMY_VOID_DRAIN_EFFECT = 32;
+  ENEMY_WITHERING_EFFECT = 33;
+  ENERGIZE_EFFECT = 34;
+  ENLARGING_EFFECT = 35;
+  EXPERIENCE_DRAIN_EFFECT = 36;
+  FIRE_TRAIL_EFFECT = 37;
+  FLASHLIGHT_EFFECT = 38;
+  FLOW_EFFECT = 39;
+  FREEZING_EFFECT = 40;
+  GRAVEKEEPER_EFFECT = 41;
+  GRAVITY_EFFECT = 42;
+  HARDEN_EFFECT = 43;
+  ICTOS_EFFECT = 44;
+  LANTERN_EFFECT = 45;
+  LAVA_EFFECT = 46;
+  LIGHTNING_CHARGE_EFFECT = 47;
+  MAGNETIC_NULLIFICATION_EFFECT = 48;
+  MAGNETIC_REDUCTION_EFFECT = 49;
+  MUTATIORB_REVIVE_EFFECT = 50;
+  NETWORK_CONTROL_EFFECT = 51;
+  ORBIT_EFFECT = 52;
+  PARALYSIS_EFFECT = 53;
+  PARRY_EFFECT = 54;
+  QUICKSAND_EFFECT = 55;
+  RADAR_EFFECT = 56;
+  REDUCE_EFFECT = 57;
+  REDUCING_EFFECT = 58;
+  REPELLING_EFFECT = 59;
+  REWIND_EFFECT = 60;
+  SHATTER_EFFECT = 61;
+  SHIELD_EFFECT = 62;
+  SHRIEK_EFFECT = 63;
+  SLIPPERY_EFFECT = 64;
+  SLOWING_EFFECT = 65;
+  STICKY_COAT_EFFECT = 66;
+  STOMP_EFFECT = 67;
+  SUGAR_RUSH_EFFECT = 68;
+  SUPERNOVA_EFFECT = 69;
+  TOXIC_EFFECT = 70;
+  VOID_DRAIN_EFFECT = 71;
+  WILDFIRE_EFFECT = 72;
+  WITHERING_EFFECT = 73;
+}
+
+enum EntityType {
+  AIBOT_ENEMY = 0;
+  AIBOT_PROJECTILE = 1;
+  BARRIER_DOME = 2;
+  BARRIER_ENEMY = 3;
+  BLACK_HOLE_PROJECTILE = 4;
+  BLIND_ENEMY = 5;
+  BLOCKING_ENEMY = 6;
+  BLOOM_PROJECTILE = 7;
+  CACTUS_ENEMY = 8;
+  CHARGING_ENEMY = 9;
+  CONFECTIONER_ENEMY = 10;
+  CONFECTIONER_SWITCH_ENEMY = 11;
+  CORROSIVE_ENEMY = 12;
+  CORROSIVE_SNIPER_ENEMY = 13;
+  CORROSIVE_SNIPER_PROJECTILE = 14;
+  CRUMBLE_PROJECTILE = 15;
+  CRUMBLING_ENEMY = 16;
+  CYBOT_ENEMY = 17;
+  CYBOT_RING_PROJECTILE = 18;
+  CYCLING_ENEMY = 19;
+  DABOT_ENEMY = 20;
+  DABOT_PROJECTILE = 21;
+  DASHER_ENEMY = 22;
+  DASHER_SWITCH_ENEMY = 23;
+  DISABLING_ENEMY = 24;
+  DISABLING_GHOST_ENEMY = 25;
+  DISARMING_ENEMY = 26;
+  DORITO_ENEMY = 27;
+  DORITO_SWITCH_ENEMY = 28;
+  DRAINING_ENEMY = 29;
+  DRIPPING_ENEMY = 30;
+  EABOT_ENEMY = 31;
+  EABOT_PROJECTILE = 32;
+  ECHELON_PROJECTILE = 33;
+  ELBOT_ENEMY = 34;
+  ELBOT_PROJECTILE = 35;
+  ELECTRICAL_ENEMY = 36;
+  ELECTRICAL_ENEMY_PROJECTILE = 37;
+  ENERGIZE_PROJECTILE = 38;
+  ENFORCING_ENEMY = 39;
+  ENFORCING_PROJECTILE = 40;
+  ENLARGING_ENEMY = 41;
+  EXPERIENCE_DRAIN_ENEMY = 42;
+  EXPLODIORB_ITEM = 43;
+  FACTORB_EXPLOSION = 44;
+  FIBOT_ENEMY = 45;
+  FIBOT_PROJECTILE = 46;
+  FIREFLY_ENEMY = 47;
+  FIRE_TRAIL_ENEMY = 48;
+  FLAMING_ENEMY = 49;
+  FLASHLIGHT_ITEM = 50;
+  FLOWER_ENEMY = 51;
+  FLOWER_PROJECTILE = 52;
+  FORCE_SNIPER_A_ENEMY = 53;
+  FORCE_SNIPER_A_PROJECTILE = 54;
+  FORCE_SNIPER_B_ENEMY = 55;
+  FORCE_SNIPER_B_PROJECTILE = 56;
+  FREEZING_ENEMY = 57;
+  FROST_GIANT_ENEMY = 58;
+  FROST_GIANT_ICE_PROJECTILE = 59;
+  GLOWY_ENEMY = 60;
+  GRASS_ENEMY = 61;
+  GRAVE_PROJECTILE = 62;
+  GRAVITY_ENEMY = 63;
+  GRAVITY_GHOST_ENEMY = 64;
+  HOMING_ENEMY = 65;
+  HOMING_SWITCH_ENEMY = 66;
+  ICBOT_ENEMY = 67;
+  ICE_GHOST_ENEMY = 68;
+  ICE_SNIPER_ENEMY = 69;
+  ICE_SNIPER_PROJECTILE = 70;
+  ICICLE_ENEMY = 71;
+  ICTOS_PROJECTILE = 72;
+  IMAGE_BACKGROUND = 73;
+  IMMUNE_ENEMY = 74;
+  INCINERATE_PROJECTILE = 75;
+  INFECTIOUS_ENEMY = 76;
+  INFINITY_ENEMY = 77;
+  INFINITY_SWITCH_ENEMY = 78;
+  LATCH_PROJECTILE = 79;
+  LAVA_ENEMY = 80;
+  LEAD_SNIPER_ENEMY = 81;
+  LEAD_SNIPER_PROJECTILE = 82;
+  LEAF_PROJECTILE = 83;
+  LIBOT_ENEMY = 84;
+  LIBOT_PROJECTILE = 85;
+  LIGHTNING_PROJECTILE = 86;
+  LIGHT_REGION = 87;
+  LIQUID_ENEMY = 88;
+  LOST_SOUL_ENEMY = 89;
+  LOTUS_FLOWER_ENEMY = 90;
+  LUNGING_ENEMY = 91;
+  LURCHING_ENEMY = 92;
+  MAGNETIC_NULLIFICATION_ENEMY = 93;
+  MAGNETIC_REDUCTION_ENEMY = 94;
+  MEBOT_ENEMY = 95;
+  MINIMIZE_PROJECTILE = 96;
+  MIST_ENEMY = 97;
+  MULTISNIPER_ENEMY = 98;
+  MULTISNIPER_PROJECTILE = 99;
+  MUTATING_ENEMY = 100;
+  NEGATIVE_MAGNETIC_GHOST_ENEMY = 101;
+  NEGATIVE_MAGNETIC_SNIPER_ENEMY = 102;
+  NEGATIVE_MAGNETIC_SNIPER_PROJECTILE = 103;
+  NETWORK_ERROR_ENEMY = 104;
+  NINJA_STAR_SNIPER_ENEMY = 105;
+  NINJA_STAR_SNIPER_PROJECTILE = 106;
+  NORMAL_ENEMY = 107;
+  OBSCURE_PROJECTILE = 108;
+  ORBIT_PROJECTILE = 109;
+  OSCILLATING_ENEMY = 110;
+  OSCILLATING_SWITCH_ENEMY = 111;
+  PARTICLE_GENERATOR = 112;
+  PELLET = 113;
+  PENNY_ENEMY = 114;
+  PENNY_SWITCH_ENEMY = 115;
+  PETRIFY_PROJECTILE = 116;
+  PHANTOM_ENEMY = 117;
+  PLAYER = 118;
+  PLBOT_ENEMY = 119;
+  POISON_GHOST_ENEMY = 120;
+  POISON_SNIPER_ENEMY = 121;
+  POISON_SNIPER_PROJECTILE = 122;
+  POLLINATE_PROJECTILE = 123;
+  POSITIVE_MAGNETIC_GHOST_ENEMY = 124;
+  POSITIVE_MAGNETIC_SNIPER_ENEMY = 125;
+  POSITIVE_MAGNETIC_SNIPER_PROJECTILE = 126;
+  POWERED_ENEMY = 127;
+  PREDICTION_SNIPER_ENEMY = 128;
+  PREDICTION_SNIPER_PROJECTILE = 129;
+  PUMPKIN_ENEMY = 130;
+  QUICKSAND_ENEMY = 131;
+  RADAR_ENEMY = 132;
+  RADAR_PROJECTILE = 133;
+  RADIATING_BULLETS_ENEMY = 134;
+  RADIATING_BULLETS_PROJECTILE = 135;
+  RADIOACTIVE_GLOOP_PROJECTILE = 136;
+  REANIMATE_PROJECTILE = 137;
+  REDUCING_ENEMY = 138;
+  REGEN_GHOST_ENEMY = 139;
+  REGEN_SNIPER_ENEMY = 140;
+  REGEN_SNIPER_PROJECTILE = 141;
+  REPELLING_ENEMY = 142;
+  REPELLING_GHOST_ENEMY = 143;
+  RESIDUE_ENEMY = 144;
+  REVERSE_PROJECTILE = 145;
+  RING_SNIPER_ENEMY = 146;
+  RING_SNIPER_PROJECTILE = 147;
+  ROBO_SCANNER_CORROSIVE_SNIPER_PROJECTILE = 148;
+  ROBO_SCANNER_FIRE_TRAIL_PROJECTILE = 149;
+  ROBO_SCANNER_FLOWER_PROJECTILE = 150;
+  ROBO_SCANNER_FORCE_A_PROJECTILE = 151;
+  ROBO_SCANNER_FORCE_B_PROJECTILE = 152;
+  ROBO_SCANNER_FROST_GIANT_ICE_PROJECTILE = 153;
+  ROBO_SCANNER_ICE_SNIPER_PROJECTILE = 154;
+  ROBO_SCANNER_LEAD_SNIPER_PROJECTILE = 155;
+  ROBO_SCANNER_LEAF_PROJECTILE = 156;
+  ROBO_SCANNER_NEGATIVE_SNIPER_PROJECTILE = 157;
+  ROBO_SCANNER_NINJA_STAR_SNIPER_PROJECTILE = 158;
+  ROBO_SCANNER_POISON_SNIPER_PROJECTILE = 159;
+  ROBO_SCANNER_POSITIVE_SNIPER_PROJECTILE = 160;
+  ROBO_SCANNER_PREDICTION_SNIPER_PROJECTILE = 161;
+  ROBO_SCANNER_RADAR_PROJECTILE = 162;
+  ROBO_SCANNER_RADIATING_BULLETS_PROJECTILE = 163;
+  ROBO_SCANNER_REGEN_SNIPER_PROJECTILE = 164;
+  ROBO_SCANNER_RESIDUE = 165;
+  ROBO_SCANNER_SNIPER_PROJECTILE = 166;
+  ROBO_SCANNER_SOUR_CANDY_ITEM = 167;
+  ROBO_SCANNER_SPARKING_PROJECTILE = 168;
+  ROBO_SCANNER_SPEED_SNIPER_PROJECTILE = 169;
+  ROBO_SCANNER_STALACTITE_PROJECTILE = 170;
+  ROBO_SCANNER_SUMMONER_BLIND_ENEMY = 171;
+  ROBO_SCANNER_VOID_SNIPER_PROJECTILE = 172;
+  ROBO_SCANNER_VOID_SWARM_PROJECTILE = 173;
+  ROBO_SCANNER_WIND_SNIPER_PROJECTILE = 174;
+  SANDROCK_ENEMY = 175;
+  SAND_ENEMY = 176;
+  SEEDLING_ENEMY = 177;
+  SEEDLING_PROJECTILE = 178;
+  SHADOW_PROJECTILE = 179;
+  SIZING_ENEMY = 180;
+  SLASHER_ENEMY = 181;
+  SLIPPERY_ENEMY = 182;
+  SLOWING_ENEMY = 183;
+  SNIPER_ENEMY = 184;
+  SNIPER_PROJECTILE = 185;
+  SNOWBALL_PROJECTILE = 186;
+  SNOWMAN_ENEMY = 187;
+  SOUR_CANDY_ITEM = 188;
+  SPARKING_ENEMY = 189;
+  SPARKING_ENEMY_PROJECTILE = 190;
+  SPARK_PROJECTILE = 191;
+  SPEED_GHOST_ENEMY = 192;
+  SPEED_SNIPER_ENEMY = 193;
+  SPEED_SNIPER_PROJECTILE = 194;
+  SPIRAL_ENEMY = 195;
+  SPIRAL_SWITCH_ENEMY = 196;
+  STALACTITE_ENEMY = 197;
+  STALACTITE_ENEMY_PROJECTILE = 198;
+  STAR_ENEMY = 199;
+  STATIC_ENEMY = 200;
+  STREAM_PATH = 201;
+  STUMBLING_ENEMY = 202;
+  SUMMONER_ENEMY = 203;
+  SUPERSTAR_ENEMY = 204;
+  SWEET_TOOTH_ITEM = 205;
+  SWITCH_ENEMY = 206;
+  TELEPORTING_ENEMY = 207;
+  THUNDERBOLT_ENEMY = 208;
+  TORCH = 209;
+  TOXIC_ENEMY = 210;
+  TREE_ENEMY = 211;
+  TRISNIPER_ENEMY = 212;
+  TRISNIPER_PROJECTILE = 213;
+  TURNING_ENEMY = 214;
+  UMBREL_PROJECTILE = 215;
+  VENGEANCE_PROJECTILE = 216;
+  VENGEFUL_SOUL_ENEMY = 217;
+  VOIDBORNE_DUMMY = 218;
+  VOID_CRAWLER_ENEMY = 219;
+  VOID_DRAIN_ENEMY = 220;
+  VOID_SNIPER_ENEMY = 221;
+  VOID_SNIPER_PROJECTILE = 222;
+  VOID_SWARM_ENEMY = 223;
+  VOID_SWARM_PROJECTILE = 224;
+  WABOT_ENEMY = 225;
+  WABOT_PROJECTILE = 226;
+  WACKY_WALL_ENEMY = 227;
+  WALL = 228;
+  WALL_ENEMY = 229;
+  WAVY_ENEMY = 230;
+  WAVY_SWITCH_ENEMY = 231;
+  WIND_GHOST_ENEMY = 232;
+  WIND_SNIPER_ENEMY = 233;
+  WIND_SNIPER_PROJECTILE = 234;
+  WITHERING_ENEMY = 235;
+  ZIGZAG_ENEMY = 236;
+  ZIGZAG_SWITCH_ENEMY = 237;
+  ZONING_ENEMY = 238;
+  ZONING_SWITCH_ENEMY = 239;
+}
+
+enum HeroSelection {
+  HERO_SELECTION_AURORA = 0;
+  HERO_SELECTION_BOLDROCK = 1;
+  HERO_SELECTION_BRUTE = 2;
+  HERO_SELECTION_CANDY = 3;
+  HERO_SELECTION_CENT = 4;
+  HERO_SELECTION_CHRONO = 5;
+  HERO_SELECTION_CYBOT = 6;
+  HERO_SELECTION_DEMONA = 7;
+  HERO_SELECTION_ECHELON = 8;
+  HERO_SELECTION_EUCLID = 9;
+  HERO_SELECTION_FACTORB = 10;
+  HERO_SELECTION_GHOUL = 11;
+  HERO_SELECTION_GLOB = 12;
+  HERO_SELECTION_IGNIS = 13;
+  HERO_SELECTION_JOLT = 14;
+  HERO_SELECTION_JOTUNN = 15;
+  HERO_SELECTION_LEONO = 16;
+  HERO_SELECTION_MAGMAX = 17;
+  HERO_SELECTION_MAGNO = 18;
+  HERO_SELECTION_MIRAGE = 19;
+  HERO_SELECTION_MORFE = 20;
+  HERO_SELECTION_MORTUUS = 21;
+  HERO_SELECTION_NECRO = 22;
+  HERO_SELECTION_NEXUS = 23;
+  HERO_SELECTION_RAMESES = 24;
+  HERO_SELECTION_REAPER = 25;
+  HERO_SELECTION_RIME = 26;
+  HERO_SELECTION_SHADE = 27;
+  HERO_SELECTION_STELLA = 28;
+  HERO_SELECTION_STHENO = 29;
+  HERO_SELECTION_VEYDRIS = 30;
+  HERO_SELECTION_VIOLA = 31;
+  UNDEFINED_HEROSELECTION = 32;
+}
+
+enum HeroType {
+  AURORA = 0;
+  BOLDROCK = 1;
+  BRUTE = 2;
+  CANDY = 3;
+  CENT = 4;
+  CHRONO = 5;
+  CYBOT = 6;
+  DEMONA = 7;
+  ECHELON = 8;
+  EUCLID = 9;
+  FACTORB = 10;
+  GHOUL = 11;
+  GLOB = 12;
+  IGNIS = 13;
+  JOLT = 14;
+  JOTUNN = 15;
+  LEONO = 16;
+  MAGMAX = 17;
+  MAGNO = 18;
+  MIRAGE = 19;
+  MORFE = 20;
+  MORTUUS = 21;
+  NECRO = 22;
+  NEXUS = 23;
+  RAMESES = 24;
+  REAPER = 25;
+  RIME = 26;
+  SHADE = 27;
+  STELLA = 28;
+  STHENO = 29;
+  VEYDRIS = 30;
+  VIOLA = 31;
+}
+
+enum KeyEvent {
+  KEY_DOWN = 0;
+  KEY_UP = 1;
+  UNDEFINED_KEY = 2;
+}
+
+enum KeyType {
+  ABILITY_ONE_KEY = 0;
+  ABILITY_THREE_KEY = 1;
+  ABILITY_TWO_KEY = 2;
+  ACTION_KEY = 3;
+  A_KEY = 4;
+  DOWN_KEY = 5;
+  D_KEY = 6;
+  FOCUS_KEY = 7;
+  LEFT_KEY = 8;
+  RIGHT_KEY = 9;
+  S_KEY = 10;
+  UNDEFINED_KEYTYPE = 11;
+  UPGRADE_ABILITY_ONE_KEY = 12;
+  UPGRADE_ABILITY_THREE_KEY = 13;
+  UPGRADE_ABILITY_TWO_KEY = 14;
+  UPGRADE_ENERGY_REGEN_KEY = 15;
+  UPGRADE_MAX_ENERGY_KEY = 16;
+  UPGRADE_SPEED_KEY = 17;
+  UP_KEY = 18;
+  W_KEY = 19;
+}
+
+enum ModToolsActionDataType {
+  ACTION_TYPE_MUTE = 0;
+  ACTION_TYPE_UNMUTE = 1;
+  ACTION_TYPE_KICK = 2;
+  ACTION_TYPE_BAN = 3;
+  ACTION_TYPE_UNBAN = 4;
+  ACTION_TYPE_IP_MUTE = 5;
+  ACTION_TYPE_IP_BAN = 6;
+  ACTION_TYPE_DELETED_MESSAGES = 7;
+  ACTION_TYPE_UNKNOWN = 8;
+}
+
+enum ModToolsActionType {
+  UNDEFINED_ACTION_TYPE = 0;
+  MUTE = 1;
+  KICK = 2;
+  KICK_GUESTS = 3;
+  KICK_NEW_PLAYERS = 4;
+  BAN = 5;
+  IP_MUTE = 6;
+  IP_BAN = 7;
+  DELETE_MESSAGES = 8;
+}
+
+enum ModToolsResponseType {
+  MOD_TOOLS_RESPONSE_NORMAL = 0;
+  MOD_TOOLS_RESPONSE_MISSING = 1;
+}
+
+enum ParticleStyle {
+  PARTICLE_STYLE_NONE = 0;
+  PARTICLE_STYLE_RESURRECTION_DOWNED = 1;
+  PARTICLE_STYLE_RESURRECTION_PELLET = 2;
+  PARTICLE_STYLE_SHIFT = 3;
+  PARTICLE_STYLE_SUPERNOVA = 4;
+  PARTICLE_STYLE_WILDFIRE = 5;
+}
+
+enum TextureType {
+  BAGUETTE_TEXTURE = 0;
+  ELECTRIC_FIELD_TEXTURE = 1;
+  ICE_TEXTURE = 2;
+  LEAVES_TEXTURE = 3;
+  NORMAL_TEXTURE = 4;
+  WOODEN_TEXTURE = 5;
+}
+
+enum ZoneType {
+  ACTIVE_ZONE = 0;
+  DUMMY_ZONE = 1;
+  EXIT_ZONE = 2;
+  REMOVAL_ZONE = 3;
+  SAFE_ZONE = 4;
+  TELEPORT_ZONE = 5;
+  VICTORY_ZONE = 6;
+}
+
+message Ability {
+  AbilityType ability_type = 1;
+  string name = 2;
+  string description = 3;
+  float energy_cost = 4;
+  float total_cooldown = 5;
+  float cooldown = 6;
+  bool locked = 7;
+  int32 level = 8;
+  int32 max_level = 9;
+  bool disabled = 10;
+  bool is_pellet_ability = 11;
+}
+
+message Area {
+  int32 index = 1;
+  int32 number = 2;
+  string name = 3;
+  int32 x = 4;
+  int32 y = 5;
+  int32 width = 6;
+  int32 height = 7;
+  repeated Zone zones = 8;
+  string region_name = 9;
+  bool boss_area = 10;
+  bool victory_area = 11;
+  float lighting = 12;
+  float snow = 13;
+  float sakura_leaves = 14;
+}
+
+message Chat {
+  repeated ChatMessage messages = 1;
+  repeated string blocked_usernames = 2;
+  repeated string unblocked_usernames = 3;
+  repeated string removed_senders = 4;
+}
+
+message ChatMessage {
+  int32 id = 1;
+  string sender = 2;
+  repeated ChatMessageStyle style = 3;
+  string text = 4;
+}
+
+message ClientPayload {
+  HeroSelection hero_selection = 1;
+  int32 sequence = 2;
+  repeated Key keys = 3;
+  MouseDown mouse_down = 4;
+  string message = 5;
+  Settings settings = 6;
+  repeated string blocked_usernames = 7;
+  repeated string unblocked_usernames = 8;
+  ModToolsAction mod_tools_action = 9;
+  ModToolsRequest mod_tools_request = 10;
+  int32 ping = 11;
+}
+
+message ConnectionPayload {
+  ConnectionType connection_type = 1;
+  string username = 2;
+  Settings settings = 3;
+  QuestData quest_data = 4;
+  string error = 5;
+}
+
+message Effect {
+  int32 id = 1;
+  bool removed = 2;
+  EffectType effect_type = 3;
+  float radius = 4;
+  float input_angle = 5;
+}
+
+message Entity {
+  int32 id = 1;
+  EntityType entity_type = 2;
+  bool removed = 3;
+  float x = 4;
+  float y = 5;
+  float radius = 6;
+  float width = 7;
+  float height = 8;
+  float duration = 9;
+  float strength = 10;
+  int32 orb_type = 11;
+  string name = 12;
+  float alpha = 13;
+  float speed = 14;
+  int32 level = 15;
+  float experience = 16;
+  float previous_level_experience = 17;
+  float next_level_experience = 18;
+  int32 upgrade_points = 19;
+  float energy = 20;
+  int32 max_energy = 21;
+  float energy_regen = 22;
+  float death_timer = 23;
+  float death_timer_total = 24;
+  HeroType hero_type = 25;
+  Ability ability_one = 26;
+  Ability ability_two = 27;
+  Ability ability_three = 28;
+  bool night_activated = 29;
+  repeated Effect effects = 30;
+  bool is_harmless = 31;
+  int32 region_highest_area_achieved = 32;
+  int32 win_count = 33;
+  int32 rescued_count = 34;
+  int32 survival_time = 35;
+  int32 active_time = 36;
+  string hat_name = 37;
+  string body_name = 38;
+  string gem_name = 39;
+  bool is_iced = 40;
+  float iced_time = 41;
+  float iced_time_left = 42;
+  bool is_snowballed = 43;
+  float snowballed_time = 44;
+  float snowballed_time_left = 45;
+  bool is_departed = 46;
+  bool is_bandaged = 47;
+  bool is_unbandaging = 48;
+  bool fusion_activated = 49;
+  float mortar_time = 50;
+  bool in_fear = 51;
+  int32 area_number = 52;
+  string area_name = 53;
+  string region_name = 54;
+  bool boss_area = 55;
+  bool victory_area = 56;
+  bool rescueable = 57;
+  bool decayed = 58;
+  float shatter_time = 59;
+  bool sugar_rush_activated = 60;
+  bool sweet_tooth_consumed = 61;
+  bool is_obscured = 62;
+  bool is_poisoned = 63;
+  float poisoned_time = 64;
+  float poisoned_time_left = 65;
+  bool crumbled_invulnerability = 66;
+  float crumbled_time_left = 67;
+  bool shaken = 68;
+  bool shaken_immune = 69;
+  float healing_time = 70;
+  bool is_sticky_coat_activated = 71;
+  bool can_cling = 72;
+  bool burning = 73;
+  bool shadowed_invulnerability = 74;
+  float shadowed_time = 75;
+  float shadowed_time_left = 76;
+  bool is_wormhole = 77;
+  bool is_destroyed = 78;
+  float grass_time = 79;
+  bool grass_harmless = 80;
+  bool sticky_coat_disabled = 81;
+  float brightness = 82;
+  float electrify_interval = 83;
+  bool is_stone = 84;
+  bool gained_immunity = 85;
+  float robo_scanner_id = 86;
+  bool energized = 87;
+  bool has_wind_debuff = 88;
+  bool has_water_debuff = 89;
+  bool has_fire_debuff = 90;
+  bool has_earth_debuff = 91;
+  bool cybot_defeated = 92;
+  bool reduced = 93;
+  bool is_repelling = 94;
+  string image_name = 95;
+  int32 color_change = 96;
+  float health = 97;
+  float max_health = 98;
+  TextureType texture = 99;
+  int32 player_interactions = 100;
+  float visual_radius = 101;
+  bool under_libot_effect = 102;
+  bool under_dabot_effect = 103;
+  bool provoked = 104;
+  float lead_time = 105;
+  bool petrified = 106;
+  bool ictos_invulnerability = 107;
+  bool continuous_revive = 108;
+  float continuous_revive_time = 109;
+  float continuous_revive_time_left = 110;
+  float release_time = 111;
+  int32 stored_pellets = 112;
+  bool mutatiorb_buff_speed_boost = 113;
+  bool mutatiorb_buff_cooldown_reduction = 114;
+  bool mutatiorb_buff_effects_reduction = 115;
+  bool mutatiorb_buff_slower_death_timer = 116;
+  bool mutatiorb_buff_experience_gain = 117;
+  bool has_radioactive_gloop = 118;
+  bool mutatiorb_buff_front_shield = 119;
+  float shield_angle = 120;
+  bool mutatiorb_buffed = 121;
+  bool is_clinging = 122;
+  bool inactive = 123;
+  float dashes = 124;
+  bool sour_candy_consumed = 125;
+  bool ability_removed = 126;
+  bool has_undead_infection = 127;
+  float harmless_time = 128;
+  float flaming_time_left = 129;
+  bool can_gain_energy = 130;
+  float growing_time_left = 131;
+  float growing_time_total = 132;
+  bool is_ember_invulnerable = 133;
+  float switch_time = 134;
+  bool switched_harmless = 135;
+  bool fading = 136;
+  float fade_in_time = 137;
+  bool parry_activated = 138;
+  bool parried = 139;
+  float slash_break = 140;
+  float network_control_time = 141;
+  bool is_burning = 142;
+  float is_burning_time = 143;
+  bool hidden = 144;
+  float lotus_brightness = 145;
+  float star_visibility = 146;
+  bool on_wall = 147;
+  bool slashing = 148;
+  float slash_time = 149;
+  float grass_fade_time = 150;
+  float fade_out_time = 151;
+  float frozen_time = 152;
+  float frozen_time_left = 153;
+  float poison_time = 154;
+  float poison_time_left = 155;
+  float lava_time = 156;
+  float lava_time_left = 157;
+  float sugar_rush_time = 158;
+  float sugar_rush_time_left = 159;
+  float stomped_stun_time = 160;
+  float vengeance_time = 161;
+  float vengeance_time_left = 162;
+  bool vengeance_frozen = 163;
+  float spark_time = 164;
+  float spark_time_left = 165;
+  float lightning_time = 166;
+  float lightning_time_left = 167;
+  float total_speed = 168;
+  float total_energy_regen = 169;
+  bool in_stream_path = 170;
+  bool is_invulnerable = 171;
+  float ability_helper_time = 172;
+  int32 ability_helper_type = 173;
+  float explodiorb_time = 174;
+  float depart_time_left = 175;
+  bool powered = 176;
+  float powered_time = 177;
+  float powered_time_interval = 178;
+  bool voidborne_invulnerable = 179;
+  float voidborne_invulnerable_time = 180;
+  float voidborne_invulnerable_time_left = 181;
+  float void_drain_time_left = 182;
+  float orbiting_duration = 183;
+  float void_time = 184;
+  bool lava_gaining_energy = 185;
+  float undead_infection_revived_time = 186;
+  bool ignore_revival_abilities = 187;
+  bool is_freezing = 188;
+  float slash_targeted_time = 189;
+  float slash_targeted_time_left = 190;
+  float broken_resistance_multiplier = 191;
+  ParticleStyle particle_style = 192;
+  bool square = 193;
+}
+
+message FramePayload {
+  int32 sequence = 1;
+  bool complete = 2;
+  bool complete_global = 3;
+  Area area = 4;
+  Map map = 5;
+  repeated Entity entities = 6;
+  repeated Entity global_entities = 7;
+  Chat chat = 8;
+  Settings settings = 9;
+  int32 self_id = 10;
+  bool reset = 11;
+  ModToolsResponse mod_tools_response = 12;
+  QuestData quest_data = 13;
+  int32 pong = 14;
+  float tick_rate = 15;
+  bytes x_entities = 16;
+  bytes y_entities = 17;
+  bytes xy_entities = 18;
+  bytes xy_radius_entities = 19;
+  repeated ServerDebugObject debug_objects = 20;
+}
+
+message Key {
+  KeyEvent key_event = 1;
+  KeyType key_type = 2;
+}
+
+message Map {
+  int32 x = 1;
+  int32 y = 2;
+  int32 width = 3;
+  int32 height = 4;
+  repeated Zone zones = 5;
+}
+
+message ModToolsAccountResponse {
+  float account_created_at = 1;
+  repeated ModToolsActionData actions_received = 2;
+  repeated ModToolsActionData actions_performed = 3;
+  repeated string related_usernames = 4;
+}
+
+message ModToolsAction {
+  ModToolsActionType type = 1;
+  repeated string targets = 2;
+  int32 duration = 3;
+}
+
+message ModToolsActionData {
+  ModToolsActionDataType action_type = 1;
+  string username = 2;
+  string author = 3;
+  float created_at = 4;
+}
+
+message ModToolsRequest {
+  string target = 1;
+}
+
+message ModToolsResponse {
+  ModToolsResponseType response_type = 1;
+  string username = 2;
+  ModToolsAccountResponse response = 3;
+}
+
+message MouseDown {
+  bool updated = 1;
+  int32 x = 2;
+  int32 y = 3;
+}
+
+message QuestData {
+  string region_name = 1;
+  int32 area_index = 2;
+  int32 completions = 3;
+  int32 completions_required = 4;
+  int32 completion_points = 5;
+  int32 personal_points = 6;
+  string extra_message = 7;
+  bool player_completion_status = 8;
+}
+
+message ServerDebugObject {
+  float x = 1;
+  float y = 2;
+  uint32 color = 3;
+  string text = 4;
+}
+
+message Settings {
+  enum DisplayEnergyBars {
+    ALL = 0;
+    YOURS = 1;
+    OTHERS = 2;
+    NONE = 3;
+  }
+  enum EnemyOutlines {
+    DISABLED = 0;
+    ENABLED = 1;
+    ENABLED_DARK = 2;
+    ENABLED_LIGHT = 3;
+  }
+  enum LeaderboardHeroesDisplay {
+    OFF = 0;
+    VISUAL = 1;
+    TEXT = 2;
+  }
+  enum LightingMode {
+    CLASSIC = 0;
+    ENHANCED = 1;
+  }
+  enum TileMode {
+    TILES = 0;
+    NO_TILES = 1;
+    TILES_DARK = 2;
+    NO_TILES_DARK = 3;
+  }
+
+  bool updated = 1;
+  bool profanity_filtering = 2;
+  bool enable_mouse_movement = 3;
+  bool toggle_mouse_movement = 4;
+  EnemyOutlines enemy_outlines = 5;
+  bool display_chat = 6;
+  bool display_leaderboard = 7;
+  LeaderboardHeroesDisplay display_leaderboard_heroes = 8;
+  bool display_timer = 9;
+  TileMode tile_mode = 10;
+  bool reconnection = 11;
+  bool confetti = 12;
+  bool ability_particles = 13;
+  bool cosmetic_effects = 14;
+  float joystick_deadzone = 15;
+  bool legacy_speed_units = 16;
+  bool fading_effects = 17;
+  float pellet_transparency = 18;
+  bool background_objects = 19;
+  DisplayEnergyBars display_energy_bars = 20;
+  bool enemy_projectile_outlines = 21;
+  bool detailed_hero_card_stats = 22;
+  bool display_gameplay_hints = 23;
+  float interface_scale = 24;
+  bool display_performance_stats = 25;
+  bool effect_blending = 26;
+  bool enemies_on_minimap = 27;
+  float minimap_entity_scale = 28;
+  bool auto_prepare_abilities = 29;
+  LightingMode lighting_mode = 30;
+  bool see_direct_messages = 31;
+  bool see_deleted_messages = 32;
+  bool see_mod_actions = 33;
+  bool see_muted_notifications = 34;
+  bool hide_message_tag = 35;
+  bool randomize_name = 36;
+  bool show_regular_name = 37;
+  bool prevent_run_logs = 38;
+  bool prevent_mod_logs = 39;
+}
+
+message Zone {
+  int32 x = 1;
+  int32 y = 2;
+  int32 width = 3;
+  int32 height = 4;
+  ZoneType type = 5;
+  uint32 background_color = 6;
+  TextureType texture = 7;
+}
+

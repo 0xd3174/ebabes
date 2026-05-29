@@ -1,0 +1,19 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"ignorePatterns": ["src/gen/**", "proto/**"],
+	"plugins": ["typescript", "unicorn", "import"],
+	"categories": {
+		"correctness": "error",
+		"perf": "warn",
+		"suspicious": "warn",
+		"pedantic": "off"
+	},
+	"rules": {
+		"unicorn/filename-case": [
+			"error",
+			{
+				"case": "kebab-case"
+			}
+		]
+	}
+}
